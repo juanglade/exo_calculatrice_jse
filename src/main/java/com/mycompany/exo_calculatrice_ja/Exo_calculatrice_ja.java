@@ -18,28 +18,34 @@ import javax.swing.JPanel;
 public class Exo_calculatrice_ja {
 
     public static void main(String[] args) {
-        //Créer et configurer le panel
+        //Créer et configurer le JFrame
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        //Créer une JBarMenu
-        JMenuBar menu = new JMenuBar();
-        menu.setSize(300, 100);
+        //Récupérer le contentPane
+        //container
+        f.getContentPane().add(panel);
+        //Ajouter le BorderLayout()
+        f.setLayout(new BorderLayout());
         // Créer un label
         double resultat = 0.0;
         JLabel label = new JLabel("Resultat =" + resultat);
-        menu.setSize(300, 100);
-        menu.setBounds(50, 25, 300, 50);
-        // Créer les boutons
+        label.setSize(300, 100);
+        label.setBounds(50, 25, 300, 50);
+        //Créer les 2 JPanels
+        JPanel panelGauche = new JPanel();
+        JPanel panelDroite = new JPanel();
+        //Ajouter le JLabel au nord
+        contentPane.add(label, BorderLayout.NORTH);
+        //Ajouter les JPanels aux zones west et east
+
+        // Créer les Jboutons
         JButton button = new JButton("Bouton");
         JButton[] boutonsGauche = new JButton[12];
         JButton[] boutonsDroite = new JButton[6];
         JButton point, egal;
         JButton effacer, effacerTout, addition, soustraction, multiplication, division;
 
-        //Ajouter les composants au panel
-        f.add(menu);
-        f.add(label);
+        //Ajouter les boutons aux JPanel
         f.add(button);
 
         // Panel pour les boutons de gauche
