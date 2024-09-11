@@ -4,11 +4,15 @@
 package com.mycompany.exo_calculatrice_ja;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 /**
@@ -22,48 +26,53 @@ public class Exo_calculatrice_ja {
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Récupérer le contentPane
-        //container
-        f.getContentPane().add(panel);
+        Container contentPane = f.getContentPane();
         //Ajouter le BorderLayout()
-        f.setLayout(new BorderLayout());
-        // Créer un label
-        double resultat = 0.0;
-        JLabel label = new JLabel("Resultat =" + resultat);
-        label.setSize(300, 100);
-        label.setBounds(50, 25, 300, 50);
-        //Créer les 2 JPanels
-        JPanel panelGauche = new JPanel();
-        JPanel panelDroite = new JPanel();
+        contentPane.setLayout(new BorderLayout(5, 3));
+
+        //Créer un label écran pour affichage des résultats
+        //double resultat = 0.0;
+        JLabel ecran = new JLabel("0", JLabel.RIGHT);
+        ecran.setFont(new Font("Arial", Font.PLAIN, 24));
+        ecran.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        ecran.setOpaque(true);
+        ecran.setBackground(Color.WHITE);
+        ecran.setPreferredSize(new Dimension(300, 50));
+
+        //Créer les 2 JPanels pour les boutons chiffres et opérations
+        JPanel panelDeGauche = new JPanel();
+        JPanel panelDeDroite = new JPanel();
+
         //Ajouter le JLabel au nord
-        contentPane.add(label, BorderLayout.NORTH);
+        contentPane.add(ecran, BorderLayout.NORTH);
+
         //Ajouter les JPanels aux zones west et east
+        contentPane.add(panelDeGauche, BorderLayout.WEST);
+        contentPane.add(panelDeDroite, BorderLayout.EAST);
 
-        // Créer les Jboutons
-        JButton button = new JButton("Bouton");
-        JButton[] boutonsGauche = new JButton[12];
-        JButton[] boutonsDroite = new JButton[6];
-        JButton point, egal;
-        JButton effacer, effacerTout, addition, soustraction, multiplication, division;
+        // Créer les Jboutons de gauche et les ajouter au JPanel de gauche
+        String[] boutonsDeGauche = {"7", "8", "9", "4", "5", "6", "3", "2", "1", "0", ".", "="};
+        for (String texte : boutonsDeGauche) {
+            JButton bouton = new JButton(texte);
+            bouton.setFont(new Font("Arial", Font.PLAIN, 20));
+            panelDeGauche.add(bouton);
+        }
 
-        //Ajouter les boutons aux JPanel
-        f.add(button);
+        // Créer les Jboutons de droite et les ajouter au JPanel de droite
+        String[] boutonsDeDroite = {"CE", "C", "+", "-", "X", "/"};
+        for (String texte : boutonsDeDroite) {
+            JButton bouton = new JButton(texte);
+            bouton.setFont(new Font("Arial", Font.PLAIN, 20));
+            panelDeDroite.add(bouton);
+        }
 
-        // Panel pour les boutons de gauche
-        JPanel panelGauche = new JPanel();
-        panelGauche.setBounds(50, 100, 300, 300);
-        panelGauche.setLayout(new GridLayout(4, 0));
+        //Panel pour les boutons de gauche
+        panelDeGauche.setBounds(50, 100, 300, 300);
+        panelDeGauche.setLayout(new GridLayout(4, 3));
 
-        // Ajout des boutons gauche au panel
-        panelGauche.add(boutonsGauche[0]);
-        panelGauche.add(boutonsGauche[1]);
-        panelGauche.add(boutonsGauche[2]);
-        panelGauche.add(boutonsGauche[3]);
-        panelGauche.add(boutonsGauche[4]);
-        panelGauche.add(boutonsGauche[5]);
-        panelGauche.add(boutonsGauche[6]);
-        panelGauche.add(boutonsGauche[7]);
-        panelGauche.add(boutonsGauche[8]);
-        panelGauche.add(boutonsGauche[9]);
+        //Panel pour les boutons de droite
+        panelDeDroite.setBounds(50, 100, 300, 300);
+        panelDeDroite.setLayout(new GridLayout(3, 2));
 
         //Compacter les élements du panel
         f.pack();
