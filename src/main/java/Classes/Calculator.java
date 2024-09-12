@@ -19,11 +19,15 @@ import javax.swing.JPanel;
 public class Calculator extends JFrame {
 
     public Calculator() {
+        this("Ma calculatrice");
+    }
+
+    public Calculator(String title) {
+        super(title);
         //configurer le comportement de la fenêtre
 
         //Créer et configurer le JFrame
-        JFrame calc = new JFrame("Ma calculatrice");
-        calc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         SetupGui();   //Generateur Utilisateur Interface
 
