@@ -20,13 +20,27 @@ public class Calculator extends JFrame {
 
     public Calculator() {
         //configurer le comportement de la fenêtre
-        setupGui();   //Generateur Utilisateur Interface
 
         //Créer et configurer le JFrame
-        JFrame f = new JFrame();
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JFrame calc = new JFrame("Ma calculatrice");
+        calc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        SetupGui();   //Generateur Utilisateur Interface
+
+        //Compacter les élements du panel
+        this.pack();
+        //Bloquer la redimenssion de la fenetre principale
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        //Afficher le panel
+        this.setVisible(true);
+    }
+
+    private void SetupGui() {
+        //création contenu fenêtre
+
         //Récupérer le contentPane
-        Container contentPane = f.getContentPane();
+        Container contentPane = this.getContentPane();
         //Ajouter le BorderLayout()
         contentPane.setLayout(new BorderLayout(5, 3));
 
@@ -73,17 +87,5 @@ public class Calculator extends JFrame {
         //Panel pour les boutons de droite
         panelDeDroite.setBounds(50, 100, 300, 300);
         panelDeDroite.setLayout(new GridLayout(3, 2));
-
-        setupGui();   //Generateur Utilisateur Interface
-
-        //Compacter les élements du panel
-        f.pack();
-        // Afficher le panel
-        f.setVisible(true);
-    }
-
-    private void setupGui() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        //création contenu fenêtre
     }
 }
