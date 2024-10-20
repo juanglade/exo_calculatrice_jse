@@ -59,7 +59,7 @@ public class Calculator extends JFrame implements ActionListener {
 
         //Créer un label écran pour affichage des résultats
         this.ecran = new JLabel("0", JLabel.RIGHT);
-        ecran.setFont(new Font("Arial", Font.PLAIN, 24));
+        ecran.setFont(new Font("Arial", Font.BOLD, 32));
         ecran.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         ecran.setOpaque(true);
         ecran.setBackground(Color.WHITE);
@@ -77,7 +77,7 @@ public class Calculator extends JFrame implements ActionListener {
         contentPane.add(panelDeDroite, BorderLayout.CENTER); //Center car utilisation de setPreferredSize
 
         // Créer les Jboutons de gauche et les ajouter au JPanel de gauche
-        String[] boutonsDeGauche = {"7", "8", "9", "4", "5", "6", "3", "2", "1", "0", ".", "="};
+        String[] boutonsDeGauche = {"7", "8", "9", "4", "5", "6", "1", "3", "2", "0", ".", "="};
         for (String texte : boutonsDeGauche) {
             JButton bouton = new JButton(texte);
             bouton.setFont(new Font("Arial", Font.PLAIN, 20));
