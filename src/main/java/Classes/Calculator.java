@@ -11,12 +11,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author Anglade Julien
  */
 public class Calculator extends JFrame {
+
+    private JLabel ecran;
 
     public Calculator() {
         this("Ma calculatrice");
@@ -26,10 +29,11 @@ public class Calculator extends JFrame {
         super(title);
         //configurer le comportement de la fenêtre
 
-        //Créer et configurer le JFrame
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //Fermeture de la fenêtre quand fin de programme si c'est la dernière
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        SetupGui();   //Generateur Utilisateur Interface
+        //Generateur Utilisateur Interface
+        this.SetupGui();
 
         //Compacter les élements du panel
         this.pack();
@@ -50,7 +54,7 @@ public class Calculator extends JFrame {
 
         //Créer un label écran pour affichage des résultats
         //double resultat = 0.0;
-        JLabel ecran = new JLabel("0", JLabel.RIGHT);
+        this.ecran = new JLabel("0", JLabel.RIGHT);
         ecran.setFont(new Font("Arial", Font.PLAIN, 24));
         ecran.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         ecran.setOpaque(true);
@@ -66,7 +70,7 @@ public class Calculator extends JFrame {
 
         //Ajouter les JPanels aux zones west et east
         contentPane.add(panelDeGauche, BorderLayout.WEST);
-        contentPane.add(panelDeDroite, BorderLayout.EAST);
+        contentPane.add(panelDeDroite, BorderLayout.CENTER); //Center car utilisation de setPreferredSize
 
         // Créer les Jboutons de gauche et les ajouter au JPanel de gauche
         String[] boutonsDeGauche = {"7", "8", "9", "4", "5", "6", "3", "2", "1", "0", ".", "="};
